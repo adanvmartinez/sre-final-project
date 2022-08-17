@@ -48,7 +48,7 @@ pipeline{
         //Make sure we have access to AWS and start terraform planning
         stage('Terraform Plan and Apply'){
             steps{
-                withAWS(credentials:'bhagwat-aws',region:'us-east-2'){
+                withAWS(credentials:'aws-credentials',region:'us-west-1'){
                     dir('terraform'){
                     sh 'pwd'
                     sh 'aws iam list-users'
