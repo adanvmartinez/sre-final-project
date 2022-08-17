@@ -115,13 +115,13 @@ pipeline{
             }
         }
         //Display completion message
-     stage('Complete'){
-        steps{
-            echo "Deployment successful!"
-            echo "Pod Name: ${params.deploymentName}"
-            echo "Service Name: ${params.servicePort}"
-        }
-     }  
+        stage('Complete'){
+            steps{
+                echo "Deployment successful!"
+                echo "Pod Name: ${params.deploymentName}"
+                echo "Service Name: ${params.servicePort}"
+            }
+        }  
 
 
         //Destoy infra
@@ -136,6 +136,6 @@ pipeline{
         //         }
         //     }
         // }
-    //}
+    }
         
 }
