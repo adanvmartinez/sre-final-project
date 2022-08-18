@@ -11,14 +11,14 @@ Provisioning a managed EKS cluster and setting up a mutable environment setup wh
 
 Post-Mortem SRE Scoped Project: Install and configure the monitoring tool stack (Splunk and Dynatrace) to monitor the Application and Infra which is very essential for every production software system.
 
-Goals:
-Create infrastructure using terraform [ managed EKS cluster ]
+### Goals:
+* Create infrastructure using terraform [ managed EKS cluster ]
 
-Use Jenkins to run automated CICD for the application
+* Use Jenkins to run automated CICD for the application  
 
-Set up Dynatrace and Splunk to monitor the application
+* Set up Dynatrace and Splunk to monitor the application
 
-Make it all highly portable
+* Make it all highly portable
 
 
 ## Setting up Ec2 Instance for Jenkins
