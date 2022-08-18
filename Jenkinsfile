@@ -90,20 +90,20 @@ pipeline{
                 withAWS(credentials:'aws-credentials',region:'us-west-1'){
                     echo "Deoploying ${params.deploymentName} ...."
 
-                    // sh "kubectl create deployment ${params.deploymentName} --image=nginx --port=${params.servicePort}"
+                    sh "kubectl create deployment ${params.deploymentName} --image=nginx --port=${params.servicePort}"
 
 
-                    // echo "Exposing port ${params.servicePort} "
-                    // sh "kubectl expose deployment ${params.deploymentName}  --type=ClusterIP  --name=nginx-service-cluster-ip"
-                    // sh "kubectl expose deployment ${params.deploymentName}  --type=NodePort  --name=nginx-service-nodeport"
-                    // sh "kubectl expose deployment ${params.deploymentName}  --type=LoadBalancer  --name=nginx-service-loadbalancer"
+                    echo "Exposing port ${params.servicePort} "
+                    sh "kubectl expose deployment ${params.deploymentName}  --type=ClusterIP  --name=nginx-service-cluster-ip"
+                    sh "kubectl expose deployment ${params.deploymentName}  --type=NodePort  --name=nginx-service-nodeport"
+                    sh "kubectl expose deployment ${params.deploymentName}  --type=LoadBalancer  --name=nginx-service-loadbalancer"
 
-                    // sh 'kubectl get nodes'
-                    // sh 'kubectl get pods --all-namespaces'
+                    sh 'kubectl get nodes'
+                    sh 'kubectl get pods --all-namespaces'
                   
 
-                    //  sh 'kubectl get nodes'
-                    //  sh 'kubectl get pods --output=wide'
+                     sh 'kubectl get nodes'
+                     sh 'kubectl get pods --output=wide'
 
                 }
             }
@@ -124,7 +124,8 @@ pipeline{
                 withAWS(credentials:'aws-credentials',region:'us-west-1'){
                     dir('terraform'){
                         echo 'Destroy Stage'
-                        sh 'terraform destroy --auto-approve'
+                        //This will be uncommented when destroying infrastructure
+                        //sh 'terraform destroy --auto-approve'
                     }
                     
                 }

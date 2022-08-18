@@ -21,8 +21,8 @@ Post-Mortem SRE Scoped Project: Install and configure the monitoring tool stack 
 * Make it all highly portable
 
 
-## Setting up Ec2 Instance for Jenkins
-Create an Ec2 for the CICD 
+## Setting up EC2 Instance for Jenkins
+Create an EC2 for the CICD 
 
 Add the inbound rules TCP 80 for the EC2 security group
 
