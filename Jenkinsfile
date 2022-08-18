@@ -65,8 +65,11 @@ pipeline{
          stage('Build NGINX-APP Docker Image'){
              steps{
                  echo 'building docker image ${params.deploymentName}'
-                 sh 'docker image rm adan/python-app'
-                 sh 'docker build . -t adan/python-app:python-app'
+                 
+                 //Skipping this stage for now...
+                 
+                 //sh 'docker image rm adan/python-app'
+                 //sh 'docker build . -t adan/python-app:python-app'
 
 
                  
