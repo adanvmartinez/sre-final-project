@@ -42,7 +42,7 @@ $ sudo apt-get install jenkins
 To view the password needed to login
 
 ```
-$ sudo nano  /var/lib/jenkins/secrets/initialAdminPassword
+$ sudo cat  /var/lib/jenkins/secrets/initialAdminPassword
 ```  
 Load the page on EC2 instalve public IP to access the Jenkins panel
 
