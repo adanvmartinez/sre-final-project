@@ -4,7 +4,7 @@
 pipeline{
 
     parameters {
-        string(name: 'deploymentName', defaultValue: 'nginx-deployment', description: 'Pod Name')
+        string(name: 'deploymentName', defaultValue: 'app-deployment', description: 'Pod Name')
         string(name: 'servicePort', defaultValue: '80', description: 'Port to listen on')
       }
 
@@ -94,9 +94,9 @@ pipeline{
 
 
                     echo "Exposing port ${params.servicePort} "
-                    sh "kubectl expose deployment ${params.deploymentName}  --type=ClusterIP  --name=nginx-service-cluster-ip"
-                    sh "kubectl expose deployment ${params.deploymentName}  --type=NodePort  --name=nginx-service-nodeport"
-                    sh "kubectl expose deployment ${params.deploymentName}  --type=LoadBalancer  --name=nginx-service-loadbalancer"
+                    sh "kubectl expose deployment ${params.deploymentName}  --type=ClusterIP  --name=app-service-cluster-ip"
+                    sh "kubectl expose deployment ${params.deploymentName}  --type=NodePort  --name=app-service-nodeport"
+                    sh "kubectl expose deployment ${params.deploymentName}  --type=LoadBalancer  --name=app-service-loadbalancer"
 
                     sh 'kubectl get nodes'
                     sh 'kubectl get pods --all-namespaces'
