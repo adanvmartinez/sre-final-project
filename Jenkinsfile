@@ -90,29 +90,20 @@ pipeline{
                 withAWS(credentials:'aws-credentials',region:'us-west-1'){
                     echo "Deoploying ${params.deploymentName} ...."
 
-                    sh "kubectl create deployment ${params.deploymentName} --image=nginx --port=${params.servicePort}"
+                    // sh "kubectl create deployment ${params.deploymentName} --image=nginx --port=${params.servicePort}"
 
 
-                    echo "Exposing port ${params.servicePort} "
-                    sh "kubectl expose deployment ${params.deploymentName}  --type=ClusterIP  --name=nginx-service-cluster-ip"
-                    sh "kubectl expose deployment ${params.deploymentName}  --type=NodePort  --name=nginx-service-nodeport"
-                    sh "kubectl expose deployment ${params.deploymentName}  --type=LoadBalancer  --name=nginx-service-loadbalancer"
+                    // echo "Exposing port ${params.servicePort} "
+                    // sh "kubectl expose deployment ${params.deploymentName}  --type=ClusterIP  --name=nginx-service-cluster-ip"
+                    // sh "kubectl expose deployment ${params.deploymentName}  --type=NodePort  --name=nginx-service-nodeport"
+                    // sh "kubectl expose deployment ${params.deploymentName}  --type=LoadBalancer  --name=nginx-service-loadbalancer"
 
-                    sh 'kubectl get nodes'
-                    sh 'kubectl get pods --all-namespaces'
-                    // sh 'kubectl apply -f deployment.yml'
-                    // sh 'kubectl get deployments python-unittest-app'
-                    // sh 'kubectl describe deployments python-unittest-app'
-                    // sh 'kubectl get replicasets'
-                    // sh 'kubectl describe replicasets'
+                    // sh 'kubectl get nodes'
+                    // sh 'kubectl get pods --all-namespaces'
+                  
 
-                    // sh 'kubectl expose deployment python-unittest-app  --port=80 --target-port=80  --name=nginx-service --type=LoadBalancer'
-
-                    // sh 'kubectl get service nginx-service' 
-                    // sh 'kubectl describe service nginx-service'
-
-                     sh 'kubectl get nodes'
-                     sh 'kubectl get pods --output=wide'
+                    //  sh 'kubectl get nodes'
+                    //  sh 'kubectl get pods --output=wide'
 
                 }
             }
