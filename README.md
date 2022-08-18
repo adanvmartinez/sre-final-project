@@ -101,14 +101,14 @@ To create the infrastructure, the process was broken down into multiple terrafor
 
 For this project, an existing NGINX image was used from the online repostory.
 
-The 
+The pipeline runs the following commands to start the service
 
 ```
-kubectl create deployment nginx-deployment --image=nginx --port=80 --dry-run=client -o yaml > nginx-deploy.yaml
+kubectl create deployment app-deployment --image=nginx --port=80 --dry-run=client -o yaml > nginx-deploy.yaml
 kubectl apply -f nginx-deploy.yaml
-kubectl expose deployment nginx-deployment  --type=ClusterIP  --name=nginx-service-cluster-ip
-kubectl expose deployment nginx-deployment  --type=NodePort  --name=nginx-service-nodeport
-kubectl expose deployment nginx-deployment  --type=LoadBalancer  --name=nginx-service-loadbalancer
+kubectl expose deployment app-deployment  --type=ClusterIP  --name=app-service-cluster-ip
+kubectl expose deployment app-deployment  --type=NodePort  --name=app-service-nodeport
+kubectl expose deployment app-deployment  --type=LoadBalancer  --name=app-service-loadbalancer
 ```
 
 
