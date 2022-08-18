@@ -34,12 +34,12 @@ $ sudo echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \ https://pk
  /etc/apt/sources.list.d/jenkins.list > /dev/null
 $ sudo apt-get update
 $ sudo apt-get install fontconfig openjdk-11-jre
-$ sudo apt-get install jenkins
+$ sudo apt-get install jenkins```
 
 
 To view the password needed to login
 
-$ sudo nano  /var/lib/jenkins/secrets/initialAdminPassword
+```$ sudo nano  /var/lib/jenkins/secrets/initialAdminPassword```
 Load the page on EC2 instalve public IP to access the Jenkins panel
 
 <!-- Step 3 - Set up Splunk on the EC2
@@ -92,15 +92,15 @@ Note: I have learned its important to use the same IAM user used for terraform t
 To create the infrastructure, the process was broken down into multiple terraform files for readability.
 
 
-The pipeline will be an easy step by step creation of the pod and exposing it to the cluster For this lab I used nginx because of its natrual logs that will be useful for monitoring
+For this project, an existing NGINX image was used from the online repostory.
 
-Here are the commands that will be executed within the pipeline to deploy the nginx application The pipeline will have a more refined version of this for the deployment
+The 
 
-kubectl create deployment nginx-deployment --image=nginx --port=80 --dry-run=client -o yaml > nginx-deploy.yaml
+```kubectl create deployment nginx-deployment --image=nginx --port=80 --dry-run=client -o yaml > nginx-deploy.yaml
 kubectl apply -f nginx-deploy.yaml
 kubectl expose deployment nginx-deployment  --type=ClusterIP  --name=nginx-service-cluster-ip
 kubectl expose deployment nginx-deployment  --type=NodePort  --name=nginx-service-nodeport
-kubectl expose deployment nginx-deployment  --type=LoadBalancer  --name=nginx-service-loadbalancer
+kubectl expose deployment nginx-deployment  --type=LoadBalancer  --name=nginx-service-loadbalancer```
 
 
 ## WSetting up the Monitoring Tool Stack
@@ -108,7 +108,7 @@ For connecting the EKS cluster to Dynatrace this is what I did
 
 Open up the cloud shell Connect to the EKS created
 
-aws eks --region us-east-2 update-kubeconfig --name EKS-Cluster
+```aws eks --region us-east-2 update-kubeconfig --name EKS-Cluster```
 Create an agent on Dynatrace and create it as an openshift Agent once creating the agent make sure to select Kubernetes instead of openshift Download the dynakube.yaml file
 
 Within the cloud shell go to Actions > Upload File and upload the dynakube.yaml file
