@@ -108,6 +108,24 @@ pipeline{
                 }
             }
         }
+        //Here we sconfigure splunk inputs and indexing 
+        stage('Set Up Splunk Montoring'){
+            steps{
+                withAWS(credentials:'aws-credentials',region:'us-west-1'){
+                    echo "Setting up splunk ns and service..."
+                    
+                    sh 'kubectl create ns splunk-connect-k8s'
+
+                    sh 'helm init --service-account tiller --tiller-namespace splunk-connect-k8s'
+
+                    sh 'helm install --name splunk-connect  --tiller-namespace splunk-connect-k8s --namespace splunk-connect-k8s -f values.yaml https://github.com/splunk/splunk-connect-for-kubernetes/releases/download/v1.0.1/splunk-connect-for-kubernetes-1.0.1.tgz'
+
+                    sh 'kubectl -n splunk-connect-k8s get pods'
+
+                }
+            }
+        }
+
         //Display completion message
         stage('Complete'){
             steps{
